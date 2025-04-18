@@ -2,7 +2,7 @@ from datetime import datetime
 from pydantic import BaseModel
 from typing import List, Optional
 
-from .enums import ToolEnum
+from tools.enums import ToolEnum
 
 
 class AgentBase(BaseModel):
