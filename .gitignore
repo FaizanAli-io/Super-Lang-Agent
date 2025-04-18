@@ -1,0 +1,68 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environment Variables
+.env
+
+# Virtual environments
+venv/
+env/
+.venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Docker
+docker-compose.override.yml
+Dockerfile.*
+.dockerignore
+
+# IDEs
+.vscode/
+.idea/
+
+# Distribution / Packaging
+*.egg-info/
+*.egg
+dist/
+build/
+*.tar.gz
+*.whl
+
+# PyInstaller
+#  Uncomment if you are using pyinstaller
+#  build/
+#  *.spec
+
+# Test / Coverage reports
+.coverage
+.tox/
+.nox/
+*.coverage.*
+*.log
+nosetests.xml
+coverage.xml
+*.hypothesis/
+*.pytest_cache/
+
+# mypy
+.mypy_cache/
+
+# Pyre type checker
+.pyre/
+
+# Sphinx documentation
+docs/_build/
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+
+# Pycharm
+.idea/
+
+# VSCode
+.vscode/
+
+.ignore/
