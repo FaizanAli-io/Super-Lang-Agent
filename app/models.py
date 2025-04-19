@@ -12,7 +12,7 @@ from sqlalchemy import (
 )
 
 from .database import Base
-from tools.enums import ToolEnum
+from .tools.enums import ToolEnum
 
 
 class Agent(Base):

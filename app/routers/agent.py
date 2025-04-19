@@ -1,5 +1,6 @@
-from fastapi import APIRouter, Depends
+from typing import Union
 from sqlalchemy.orm import Session
+from fastapi import APIRouter, Depends
 
 from .. import schemas
 from ..dependencies import get_db
@@ -8,11 +9,13 @@ from ..crud.agent import CRUDAgent
 router = APIRouter()
 
 
-@router.post("/", response_model=schemas.Agent)
+@router.post("/", response_model=Union[schemas.Agent, list[schemas.Agent]])
 def create_agent(
-    agent: schemas.AgentCreate,
+    agent: Union[schemas.AgentCreate, list[schemas.AgentCreate]],
     db: Session = Depends(get_db),
 ):
+    if isinstance(agent, list):
+        return [CRUDAgent.create(db=db, agent=a) for a in agent]
     return CRUDAgent.create(db=db, agent=agent)
 
 

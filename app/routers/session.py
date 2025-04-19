@@ -1,5 +1,6 @@
-from fastapi import APIRouter, Depends
+from typing import Union
 from sqlalchemy.orm import Session
+from fastapi import APIRouter, Depends
 
 from .. import schemas
 from ..dependencies import get_db
@@ -8,11 +9,13 @@ from ..crud.session import CRUDSession
 router = APIRouter()
 
 
-@router.post("/", response_model=schemas.Session)
+@router.post("/", response_model=Union[schemas.Session, list[schemas.Session]])
 def create_session(
-    session: schemas.SessionCreate,
+    session: Union[schemas.SessionCreate, list[schemas.SessionCreate]],
     db: Session = Depends(get_db),
 ):
+    if isinstance(session, list):
+        return [CRUDSession.create(db=db, session=s) for s in session]
     return CRUDSession.create(db=db, session=session)
 
 
