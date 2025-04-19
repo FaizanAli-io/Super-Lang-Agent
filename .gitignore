@@ -66,3 +66,7 @@ docs/_build/
 .vscode/
 
 .ignore/
+
+# Google App Config
+credentials.json
+token.json

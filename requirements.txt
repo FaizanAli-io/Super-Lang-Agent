@@ -11,10 +11,13 @@ tiktoken
 langgraph
 langchain
 langchain-core
+langchain-apify
 langchain-openai
 langchain-anthropic
 langchain-community
 
-langchain-apify
+langchain_google_community[gmail]
 
+rizaio
 wikipedia
+tavily-python
