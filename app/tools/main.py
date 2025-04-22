@@ -88,3 +88,25 @@ class ToolManager:
     def create_executor(self):
         all_tools = [t for sublist in self.tools.values() for t in sublist]
         return create_react_agent(self.model, all_tools, checkpointer=self.memory)
+
+
+if __name__ == "__main__":
+    manager = ToolManager()
+    manager.load_tools(["RESEARCH"])
+    graph = manager.create_executor()
+
+    thread_id = "2"
+
+    while True:
+        user_input = input("You: ")
+        if user_input.strip().upper() == "QUIT":
+            break
+
+        events = graph.stream(
+            {"messages": [{"role": "user", "content": user_input}]},
+            {"configurable": {"thread_id": thread_id}},
+            stream_mode="values",
+        )
+
+        for event in events:
+            event["messages"][-1].pretty_print()
